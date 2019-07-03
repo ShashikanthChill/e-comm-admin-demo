@@ -1,0 +1,81 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.5">
+        <title>Registration e-commerce demo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                background: -webkit-linear-gradient(left, #E0EAFC,#CFDEF3);
+                /*padding: 100px;*/
+            }
+        </style>
+    </head>
+    <body>
+        <div th:replace="productstypepage::nav"></div>
+        <div class="container" style="padding: 75px">
+            <form action="#" th:action="@{/updatebooks}" enctype="multipart/form-data" th:object="${product}" method="post" id="form">
+                <div class="form-group row">
+                    <label for="id" class="col-1 col-form-label">#</label>
+                    <div class="col-2">
+                        <input id="id" type="text" class="form-control" th:field="*{id}" th:value="*{id}" readonly>
+                    </div>
+                    <label for="name" class="col-1 col-form-label">Name</label>
+                    <div class="col-8">
+                        <input id="name" type="text" class="form-control" th:field="*{name}" th:value="*{name}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="desc" class="col-2 col-form-label">Description</label>
+                    <div class="col-7">
+                        <textarea th:class="form-control" form="form" th:field="*{description}" th:value="*{description}" rows="5" cols="30"></textarea>
+                    </div>
+                    <label for="price" class="col-1 col-form-label">Price</label>
+                    <div class="col-2">
+                        <input id="price" type="number" class="form-control" th:field="*{price}" th:value="*{price}" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="author" class="col-2 col-form-label">Author</label>
+                    <div class="col-4">
+                        <input id="author" type="text" class="form-control" th:field="*{author}" th:value="*{author}">
+                    </div>
+                    <label for="isbn" class="col-2 col-form-label">ISBN</label>
+                    <div class="col-4">
+                        <input id="isbn" type="text" class="form-control" th:field="*{isbn}" th:value="*{isbn}">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="edition" class="col-2 col-form-label">Edition</label>
+                    <div class="col-2">
+                        <input id="edition" type="number" class="form-control" th:field="*{edition}" th:value="*{edition}">
+                    </div>
+                    <label for="pages" class="col-1 col-form-label">Pages</label>
+                    <div class="col-2">
+                        <input id="pages" type="number" class="form-control" th:field="*{pages}" th:value="*{pages}">
+                    </div>
+                    <label for="lang" class="col-2 col-form-label">Language</label>
+                    <div class="col-3">
+                        <input id="lang" type="text" class="form-control" th:field="*{lang}" th:value="*{lang}">
+                    </div>
+                </div>
+                    <div class="col-8">
+                        <input type="file" name="productImage">
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" class="btn btn-primary" value="Add/Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

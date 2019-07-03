@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v3.8.5">
+        <title>Registration e-commerce demo</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                background: -webkit-linear-gradient(left, #E0EAFC,#CFDEF3);
+                /*padding: 100px;*/
+            }
+        </style>
+    </head>
+    <body>
+        <div th:replace="productstypepage::nav"></div>
+        <div class="container" style="padding: 75px">
+            <form action="#" th:action="@{/updatemobiles}" enctype="multipart/form-data" th:object="${product}" method="post" id="form">
+                <div class="form-group row">
+                    <label for="id" class="col-1 col-form-label">#</label>
+                    <div class="col-2">
+                        <input id="id" type="text" class="form-control" th:field="*{id}" th:value="*{id}" readonly>
+                    </div>
+                    <label for="name" class="col-1 col-form-label">Name</label>
+                    <div class="col-8">
+                        <input id="name" type="text" class="form-control" th:field="*{name}" th:value="*{name}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="desc" class="col-2 col-form-label">Description</label>
+                    <div class="col-7">
+                        <textarea th:class="form-control" form="form" th:field="*{description}" th:value="*{description}" rows="5" cols="30"></textarea>
+                    </div>
+                    <label for="price" class="col-1 col-form-label">Price</label>
+                    <div class="col-2">
+                        <input id="price" type="number" class="form-control" th:field="*{price}" th:value="*{price}" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="mfg" class="col-2 col-form-label">Manufacturer</label>
+                    <div class="col-4">
+                        <input id="mfg" type="text" class="form-control" th:field="*{manufacturer}" th:value="*{manufacturer}">
+                    </div>
+                    <label for="modelNumber" class="col-2 col-form-label">Model Number</label>
+                    <div class="col-4">
+                        <input id="size" type="text" class="form-control" th:field="*{modelNumber}" th:value="*{modelNumber}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="size" class="col-2 col-form-label">Size(incs)</label>
+                    <div class="col-4">
+                        <input id="size" type="number" class="form-control" th:field="*{size}" th:value="*{size}" step="0.01">
+                    </div>
+                    <label for="colour" class="col-2 col-form-label">Colour</label>
+                    <div class="col-4">
+                        <input id="colour" type="text" class="form-control" th:field="*{colour}" th:value="*{colour}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="processor" class="col-2 col-form-label">Processor</label>
+                    <div class="col-4">
+                        <input id="processor" type="text" class="form-control" th:field="*{processor}" th:value="*{processor}">
+                    </div>
+                    <label for="os" class="col-2 col-form-label">OS</label>
+                    <div class="col-4">
+                        <input id="os" type="text" class="form-control" th:field="*{os}" th:value="*{os}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ram" class="col-2 col-form-label">Ram(GB)</label>
+                    <div class="col-2">
+                        <input id="ram" type="number" class="form-control" th:field="*{ram}" th:value="*{ram}">
+                    </div>
+                    <label for="battery" class="col-2 col-form-label">Battery(mAh)</label>
+                    <div class="col-2">
+                        <input id="battery" type="number" class="form-control" th:field="*{battery}" th:value="*{battery}">
+                    </div>
+                    <label for="storage" class="col-2 col-form-label">Disk(GB)</label>
+                    <div class="col-2">
+                        <input id="storage" type="number" class="form-control" th:field="*{storage}" th:value="*{storage}">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-end">
+                    <div class="col-8">
+                        <input type="file" name="productImage">
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" class="btn btn-primary" value="Add/Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

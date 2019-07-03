@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Product Types</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body style="background: -webkit-linear-gradient(left, #F2994A,#F2C94C);">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="nav">
+            <a class="navbar-brand" href="#" th:href="@{/}" th:text="#{webapp.title}">Title</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li sec:authorize="!isAuthenticated()" class="nav-item active">
+                        <a class="nav-link" href="#" th:href="@{/login}" id="login" th:text="#{webapp.login}">Login</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit()" th:text="#{webapp.logout}">Logout</a>
+                        <form id="logout-form" action="#" th:action="@{/logout}" method="post">
+                            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        <div class="container-fluid" style="padding: 25px">
+            <div class="container" style="background: -webkit-linear-gradient(left, #F09819,#F09819);padding: 25px;">
+                <div th:each="productTypesList : ${listOfProductTypesList}" class="row justify-content-between" style="margin: 15px 0px 15px 0px">
+                    <div th:each="productType : ${productTypesList}" class="card col-sm-3" style="width: 18rem;padding: 5px">
+                        <img class="card-img-top" th:src="${productType.images}" th:alt="|${productType.typeName} image cap|" alt="books image cap">
+                        <div class="card-body">
+                            <p class="card-text" th:text="${productType.description}">products type description.</p>
+                            <center>
+                                <form action="#" th:action="@{/products}" th:id="|${productType.typeName}-form|">
+                                    <input type="hidden" name="type-name" th:value="${productType.typeName}">
+                                    <input type="submit" class="btn btn-primary" value="View"/>
+                                </form>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </body>
+</html>

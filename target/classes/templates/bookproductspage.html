@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Book Products</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="productstypepage::nav"></div>
+        <div class="container-lg" style="margin:25px;padding: 25px;">
+            <a  class="btn btn-info" th:href="@{/bookproduct?productId=}">New Product Entry</a>
+            <a  class="btn btn-info" th:href="@{/exportbooks}">Download CSV</a>
+            <br>
+            <div class="container-lg" style="margin: 10px">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered table-hover" id="table">
+                        <thead class="thead-dark">
+                            <tr align="center"  valign="middle">
+                                <!--<tr>-->
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Author</th>
+                                <th>Edition</th>
+                                <th>ISBN</th>
+                                <th>Lang</th>
+                                <th>Pages</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product:${products}" align="center"  valign="middle">
+                                <th scope="row" th:text="${product.id}">id</th>
+                                <td th:text="${product.name}" style="max-width: 200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap">name</td>
+                                <td  th:text="${product.description}" style="max-width: 200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap">description</td>
+                                <td  th:text="${product.price}">price</td>
+                                <td  th:text="${product.author}">author</td>
+                                <td  th:text="${product.edition}">edition</td>
+                                <td  th:text="${product.isbn}">isbn</td>
+                                <td  th:text="${product.lang}">lang</td>
+                                <td  th:text="${product.pages}">pages</td>
+                                <td>
+                                    <a href="#" th:href="|/bookproduct?productId=${product.id}|">Update</a>
+                                    <span> <span>
+                                            <a href="#" th:href="|/deletefromtable?productId=${product.id}|">Delete</a>
+                                            </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </body>
+                                            </html>

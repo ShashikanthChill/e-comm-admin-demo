@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Book Products</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="productstypepage::nav"></div>
+        <div class="container-lg" style="margin:25px;padding: 25px;">
+            <a  class="btn btn-info" th:href="@{/mobileproduct?productId=}">New Product Entry</a>
+            <a  class="btn btn-info" th:href="@{/exportmobiles}">Download CSV</a>
+            <br>
+            <div class="container-lg" style="margin: 10px">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered table-hover" id="table">
+                        <thead class="thead-dark">
+                            <tr align="center"  valign="middle">
+                                <!--<tr>-->
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Manufacturer</th>
+                                <th>Model No.</th>
+                                <th>Size(incs)</th>
+                                <th>Colour</th>
+                                <th>Processor</th>
+                                <th>Ram(GB)</th>
+                                <th>OS</th>
+                                <th>Battery(mAh)</th>
+                                <th>Storage(GB)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product:${products}" align="center"  valign="middle">
+                                <th scope="row" th:text="${product.id}">id</th>
+                                <td th:text="${product.name}" style="max-width: 200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap">name</td>
+                                <td  th:text="${product.description}" style="max-width: 200px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap">description</td>
+                                <td  th:text="${product.price}">price</td>
+                                <td  th:text="${product.manufacturer}">mfg</td>
+                                <td  th:text="${product.modelNumber}">model no.</td>
+                                <td  th:text="${product.size}">size</td>
+                                <td  th:text="${product.colour}">colour</td>
+                                <td  th:text="${product.processor}">processor</td>
+                                <td  th:text="${product.ram}">ram</td>
+                                <td  th:text="${product.os}">os</td>
+                                <td  th:text="${product.battery}">battery</td>
+                                <td  th:text="${product.storage}">storage</td>
+                                <td>
+                                    <a href="#" th:href="|/mobileproduct?productId=${product.id}|">Update</a>
+                                    <span> <span>
+                                            <a href="#" th:href="|/deletefromtable?productId=${product.id}|">Delete</a>
+                                            </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </body>
+                                            </html>
